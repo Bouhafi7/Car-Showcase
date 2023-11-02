@@ -5,7 +5,7 @@ import { Combobox, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { manufacturers } from "@/constants";
 
-const SearchManufacturer = ({ selected, setSelected }: SearchManufacturerProps) => {
+const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacturerProps) => {
     const [query, setQuery] = useState("");
 
     const filterdManufaturers = query === '' ? manufacturers :
@@ -15,16 +15,16 @@ const SearchManufacturer = ({ selected, setSelected }: SearchManufacturerProps) 
 
     return (
         <div className="search-manufacturer">
-            <Combobox value={selected} onChange={setSelected}>
+            <Combobox value={manufacturer} onChange={setManufacturer}>
                 <div className="relative w-full">
                     <Combobox.Button className="absolute top-[14px]">
                         <Image src="/car-logo.svg" alt="Car Logo" width={20} height={20} className='ml-3 -mt-[5px]' style={{ width: 'auto' }} />
                     </Combobox.Button>
                     <Combobox.Input className="search-manufacturer__input" placeholder="Volkswagen" onChange={e => setQuery(e.target.value)}
-                        displayValue={(manufacturer: string) => manufacturer} />
+                        displayValue={(manufacturer: string) => manufacturer} autoComplete="off" />
                     <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0"
                         afterLeave={() => setQuery('')}>
-                        <Combobox.Options>
+                        <Combobox.Options className='absolute w-full bg-white z-10 max-h-80 overflow-auto'>
                             {filterdManufaturers.length === 0 && query !== '' ?
                                 <Combobox.Option value={query} className='search-manufacturer__option'>{query} does not exist.</Combobox.Option> :
                             filterdManufaturers.map(item => (
