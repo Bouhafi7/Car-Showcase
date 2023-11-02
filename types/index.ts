@@ -18,17 +18,11 @@ export interface OptionsProps {
 export interface CustomFilterProps {
     title: string,
     options: OptionsProps[],
-    setFilter: Dispatch<SetStateAction<string>>
 }
 
 export interface SearchManufacturerProps {
-    selected: string,
-    setSelected: Dispatch<SetStateAction<string>>,
-}
-
-export interface SearchBarProps {
+    manufacturer: string,
     setManufacturer: Dispatch<SetStateAction<string>>,
-    setModel: Dispatch<SetStateAction<string>>
 }
 
 export interface CarCardProps {
@@ -54,25 +48,24 @@ export interface CarDetailsProps {
 
 export interface FilterProps {
     manufacturer: string,
-    year: string,
+    year: number,
     fuel: string,
     limit: number,
     model: string
 }
 
-// export interface SearchParamsProps {
-//     searchParams: { 
-//         manufacturer: string,
-//         year: number,
-//         fuel: string,
-//         limit: number,
-//         model: string,
-//         pageNumber: number
-//     },
-// }
+export interface SearchParamsProps {
+    searchParams: { 
+        manufacturer: string,
+        year: number,
+        fuel: string,
+        limit: number,
+        model: string,
+        pageNumber: number
+    },
+}
 
 export interface ShowMoreProps {
     pageNumber: number,
     isNext: boolean
-    setLimit: Dispatch<SetStateAction<number>>
 }

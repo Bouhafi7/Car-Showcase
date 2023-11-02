@@ -5,7 +5,7 @@ import { CustomButton } from ".";
 
 const Hero = () => {
     const handleScroll = () => {
-        
+        window.scrollTo(0, window.scrollY + 900);
     }
 
     return (
